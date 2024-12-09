@@ -1,5 +1,5 @@
 import { resolve } from "path";
-import { compOut, buildOutput, lcxDesignRoot } from "./paths";
+import { compOut, buildOutput } from "./paths";
 import { copy } from "fs-extra/esm";
 
 export const copyTypesDefinitions = async () => {
@@ -7,4 +7,3 @@ export const copyTypesDefinitions = async () => {
   await copy(src, resolve(compOut, "es"), { recursive: true });
   await copy(src, resolve(compOut, "lib"), { recursive: true });
 };
-  

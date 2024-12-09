@@ -1,4 +1,4 @@
-const defaultNamespace = "lcx";
+const defaultNamespace = "lcx-design";
 
 const _bem = (
   block: string,

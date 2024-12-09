@@ -8,6 +8,7 @@ import esbuild from "rollup-plugin-esbuild";
 import typescript from "@rollup/plugin-typescript";
 import glob from "fast-glob";
 import { pkgRoot, compOut } from "../../build-utils/index.ts";
+import postcss from "rollup-plugin-postcss";
 
 const excludeFiles = (files) => {
   const excludes = ["node_modules"];
@@ -29,7 +30,17 @@ export const buildModules = async () => {
     input,
     plugins: [
       nodeResolve({
-        extensions: [".js", ".jsx", ".ts", ".tsx", ".less"], //允许我们加载第三方模块
+        extensions: [".js", ".jsx", ".ts", ".tsx"], //允许我们加载第三方模块
+      }),
+      postcss({
+        // 支持 Less 文件
+        extensions: [".css", ".less"],
+        extract: true, // 将 CSS 提取到单独的文件中
+        minimize: true, // 压缩 CSS
+        exec: true,
+        use: {
+          less: { javascriptEnabled: true }, // Less 配置
+        },
       }),
       babel({
         babelHelpers: "bundled",

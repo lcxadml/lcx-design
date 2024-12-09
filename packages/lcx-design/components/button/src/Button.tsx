@@ -1,6 +1,6 @@
 import React, { CSSProperties, ReactNode } from "react";
 import "../style/Button.less";
-import useNamespace from "../../../../utils/useNamespace";
+import useNamespace from "../../../utils/useNamespace";
 import classNames from "classnames";
 
 type BasicProps = {

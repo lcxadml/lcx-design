@@ -1,22 +1,20 @@
-import { Project, ScriptTarget } from "ts-morph";
-import { buildOutput, pathRoot } from "../../build-utils";
-import { resolve } from "path";
-import typeCheck from "../../build-utils/typecheck";
+import { join } from "path";
+import { run } from "../../build-utils/index";
+import { buildOutput } from "../../build-utils/index";
+import { copy, remove } from "fs-extra";
 
-const project = new Project({
-  compilerOptions: {
-    target: ScriptTarget.ES2018,
-    emitDeclarationOnly: true,
-    outDir: resolve(buildOutput, "types"),
-    preserveSymlinks: true,
-    skipLibCheck: true,
-    noImplicitAny: false,
-  },
-  tsConfigFilePath: resolve(pathRoot, "tsconfig.json"),
-});
+const generateTypesDefinitions = async () => {
+  await run(
+    "npx tsc -p tsconfig.json --declaration --emitDeclarationOnly --declarationDir dist/types"
+  );
 
-export const generateTypesDefinitions = async () => {
-  typeCheck(project);
+  const sourceDir = join(buildOutput, "types", "packages", "lcx-design");
 
-  await project.emit();
+  const typesDirEs = join(buildOutput, "lcx-design", "es");
+  const typesDirLib = join(buildOutput, "lcx-design", "lib");
+  await copy(sourceDir, typesDirEs, { recursive: true });
+  await copy(sourceDir, typesDirLib, { recursive: true });
+  await remove(sourceDir);
 };
+
+export default generateTypesDefinitions;

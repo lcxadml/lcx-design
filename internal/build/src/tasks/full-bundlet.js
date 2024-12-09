@@ -2,17 +2,28 @@ import { resolve } from "path";
 import { rollup } from "rollup";
 import { compOut, compRoot } from "../../build-utils/index.ts";
 import nodeResolve from "@rollup/plugin-node-resolve";
-import commonjs from '@rollup/plugin-commonjs';
+import commonjs from "@rollup/plugin-commonjs";
 import babel from "@rollup/plugin-babel";
 import esbuild from "rollup-plugin-esbuild";
 import typescript from "@rollup/plugin-typescript";
+import less from "rollup-plugin-less";
+import postcss from "rollup-plugin-postcss";
 
 export const buildFullEntry = async () => {
   const bundle = await rollup({
     input: resolve(compRoot, "index.ts"),
     plugins: [
+      postcss({
+        // 支持 Less 文件
+        extensions: [".css", ".less"],
+        extract: true, // 将 CSS 提取到单独的文件中
+        minimize: true, // 压缩 CSS
+        use: {
+          less: { javascriptEnabled: true }, // Less 配置
+        },
+      }),
       nodeResolve({
-        extensions: [".js", ".jsx", ".ts", ".tsx", ".less"], //允许我们加载第三方模块
+        extensions: [".js", ".jsx", ".ts", ".tsx"], //允许我们加载第三方模块
       }),
       babel({
         babelHelpers: "bundled",

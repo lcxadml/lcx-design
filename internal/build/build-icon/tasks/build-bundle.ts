@@ -1,26 +1,23 @@
-import { resolve } from "path";
+import { glob } from "fast-glob";
 import { rollup } from "rollup";
-import { compOut, compRoot } from "../../build-utils/index.ts";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
+import { IconOut, lcxDesignIconRootReact } from "../../build-utils";
+
 import babel from "@rollup/plugin-babel";
 import esbuild from "rollup-plugin-esbuild";
 import typescript from "@rollup/plugin-typescript";
-import postcss from "rollup-plugin-postcss";
+import * as path from "path";
 
-export const buildFullEntry = async () => {
+const buildModules = async () => {
+  const input = await glob("*.tsx", {
+    cwd: lcxDesignIconRootReact,
+    absolute: true,
+    onlyFiles: true,
+  });
   const bundle = await rollup({
-    input: resolve(compRoot, "index.ts"),
+    input,
     plugins: [
-      postcss({
-        // 支持 Less 文件
-        extensions: [".css", ".less"],
-        extract: true, // 将 CSS 提取到单独的文件中
-        minimize: true, // 压缩 CSS
-        use: {
-          less: { javascriptEnabled: true }, // Less 配置
-        },
-      }),
       nodeResolve({
         extensions: [".js", ".jsx", ".ts", ".tsx"], //允许我们加载第三方模块
       }),
@@ -36,10 +33,20 @@ export const buildFullEntry = async () => {
 
     external: [],
   });
-  // 写入磁盘
   bundle.write({
-    format: "umd",
-    file: resolve(compOut, "dist", "index.full.js"),
-    name: "LcxDesign",
+    format: "esm",
+    dir: path.resolve(IconOut, "es"),
+    preserveModules: true,
+    preserveModulesRoot: IconOut,
+    entryFileNames: "[name].mjs",
+  });
+
+  bundle.write({
+    format: "cjs",
+    dir: path.resolve(IconOut, "lib"),
+    preserveModules: true,
+    preserveModulesRoot: IconOut,
+    entryFileNames: "[name].cjs",
   });
 };
+buildModules();

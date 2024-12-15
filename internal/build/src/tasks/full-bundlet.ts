@@ -1,6 +1,6 @@
 import { resolve } from "path";
 import { rollup } from "rollup";
-import { compOut, compRoot } from "../../build-utils/index.ts";
+import { compOut, compRoot } from "../../build-utils/index";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import babel from "@rollup/plugin-babel";
@@ -17,9 +17,7 @@ export const buildFullEntry = async () => {
         extensions: [".css", ".less"],
         extract: true, // 将 CSS 提取到单独的文件中
         minimize: true, // 压缩 CSS
-        use: {
-          less: { javascriptEnabled: true }, // Less 配置
-        },
+        use: ["less"],
       }),
       nodeResolve({
         extensions: [".js", ".jsx", ".ts", ".tsx"], //允许我们加载第三方模块
@@ -39,7 +37,7 @@ export const buildFullEntry = async () => {
   // 写入磁盘
   bundle.write({
     format: "umd",
-    file: resolve(compOut, "dist", "index.full.js"),
+    file: resolve(compOut, "umd", "index.full.js"),
     name: "LcxDesign",
   });
 };

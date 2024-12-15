@@ -121,6 +121,9 @@ importers:
       '@svgr/rollup':
         specifier: ^8.1.0
         version: 8.1.0(rollup@4.28.1)(typescript@5.7.2)
+      '@types/fs-extra':
+        specifier: ^11.0.4
+        version: 11.0.4
       '@vitejs/plugin-vue':
         specifier: ^5.2.1
         version: 5.2.1(vite@6.0.3(@types/node@22.10.1)(less@3.13.1)(tsx@4.19.2))(vue@3.5.13(typescript@5.7.2))
@@ -1457,11 +1460,17 @@ packages:
   '@types/expect@1.20.4':
     resolution: {integrity: sha512-Q5Vn3yjTDyCMV50TB6VRIbQNxSE4OmZR86VSbGaNpfUolm0iePBB4KdEEHmxoY5sT2+2DIvXW0rvMDP2nHZ4Mg==}
 
+  '@types/fs-extra@11.0.4':
+    resolution: {integrity: sha512-yTbItCNreRooED33qjunPthRcSjERP1r4MqCZc7wv0u2sUkzTFp45tgUfS5+r7FrZPdmCCNflLhVSP/o+SemsQ==}
+
   '@types/glob-stream@8.0.2':
     resolution: {integrity: sha512-kyuRfGE+yiSJWzSO3t74rXxdZNdYfLcllO0IUha4eX1fl40pm9L02Q/TEc3mykTLjoWz4STBNwYnUWdFu3I0DA==}
 
   '@types/gulp@4.0.17':
     resolution: {integrity: sha512-+pKQynu2C/HS16kgmDlAicjtFYP8kaa86eE9P0Ae7GB5W29we/E2TIdbOWtEZD5XkpY+jr8fyqfwO6SWZecLpQ==}
+
+  '@types/jsonfile@6.1.4':
+    resolution: {integrity: sha512-D5qGUYwjvnNNextdU59/+fI+spnwtTFmyQP0h+PfIOSkNfpU6AOICUOkm4i0OnSk+NyjdPJrxCDro0sJsWlRpQ==}
 
   '@types/node@22.10.1':
     resolution: {integrity: sha512-qKgsUwfHZV2WCWLAnVP1JqnpE6Im6h3Y0+fYgMTasNQ7V++CBX5OT1as0g0f+OyubbFqhf6XVNIsmN4IIhEgGQ==}
@@ -4445,6 +4454,11 @@ snapshots:
 
   '@types/expect@1.20.4': {}
 
+  '@types/fs-extra@11.0.4':
+    dependencies:
+      '@types/jsonfile': 6.1.4
+      '@types/node': 22.10.1
+
   '@types/glob-stream@8.0.2':
     dependencies:
       '@types/node': 22.10.1
@@ -4457,6 +4471,10 @@ snapshots:
       '@types/undertaker': 1.2.11
       '@types/vinyl-fs': 3.0.5
       chokidar: 3.6.0
+
+  '@types/jsonfile@6.1.4':
+    dependencies:
+      '@types/node': 22.10.1
 
   '@types/node@22.10.1':
     dependencies:

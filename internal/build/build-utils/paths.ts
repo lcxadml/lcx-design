@@ -20,4 +20,4 @@ export const buildOutput = resolve(pathRoot, "dist");
 
 export const compOut = resolve(buildOutput, "lcx-design");
 
-export const IconOut = resolve(buildOutput, "lcx-design-icon");
+export const IconOut = resolve(lcxDesignIconRootReact, "dist");

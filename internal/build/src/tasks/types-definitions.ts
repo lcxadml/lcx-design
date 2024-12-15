@@ -12,8 +12,8 @@ const generateTypesDefinitions = async () => {
 
   const typesDirEs = join(buildOutput, "lcx-design", "es");
   const typesDirLib = join(buildOutput, "lcx-design", "lib");
-  await copy(sourceDir, typesDirEs, { recursive: true });
-  await copy(sourceDir, typesDirLib, { recursive: true });
+  await copy(sourceDir, typesDirEs);
+  await copy(sourceDir, typesDirLib);
   await remove(sourceDir);
 };
 

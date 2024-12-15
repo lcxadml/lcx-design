@@ -1,7 +1,12 @@
-import { Button } from "lcx-design";
+import { Button } from "../../dist/lcx-design";
 
 function App() {
-  return <Button>测试</Button>;
+  return (
+    <div>
+      111
+      <Button />
+    </div>
+  );
 }
 
 export default App;

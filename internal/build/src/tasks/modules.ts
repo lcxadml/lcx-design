@@ -1,13 +1,13 @@
 import { resolve } from "path";
 import { rollup } from "rollup";
-import { compRoot } from "../../build-utils/index.ts";
+import { compRoot } from "../../build-utils";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import babel from "@rollup/plugin-babel";
 import esbuild from "rollup-plugin-esbuild";
 import typescript from "@rollup/plugin-typescript";
 import glob from "fast-glob";
-import { pkgRoot, compOut } from "../../build-utils/index.ts";
+import { pkgRoot, compOut } from "../../build-utils";
 import postcss from "rollup-plugin-postcss";
 
 const excludeFiles = (files) => {
@@ -38,9 +38,7 @@ export const buildModules = async () => {
         extract: true, // 将 CSS 提取到单独的文件中
         minimize: true, // 压缩 CSS
         exec: true,
-        use: {
-          less: { javascriptEnabled: true }, // Less 配置
-        },
+        use: ["less"],
       }),
       babel({
         babelHelpers: "bundled",
@@ -60,7 +58,7 @@ export const buildModules = async () => {
     dir: resolve(compOut, "es"),
     preserveModules: true,
     preserveModulesRoot: comRoot,
-    entryFileNames: "[name].mjs",
+    entryFileNames: "[name].js",
   });
 
   bundle.write({
@@ -68,7 +66,7 @@ export const buildModules = async () => {
     dir: resolve(compOut, "lib"),
     preserveModules: true,
     preserveModulesRoot: comRoot,
-    entryFileNames: "[name].cjs",
+    entryFileNames: "[name].js",
   });
 };
 buildModules();

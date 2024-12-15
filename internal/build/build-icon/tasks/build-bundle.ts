@@ -39,7 +39,7 @@ const buildModules = async () => {
   });
   await bundle.write({
     format: "esm",
-    dir: path.resolve(IconOut, "es"),
+    dir: path.resolve(IconOut, "lcx-design-icon", "es"),
     preserveModules: true,
     preserveModulesRoot: path.resolve(lcxDesignIconRoot, "react"),
     entryFileNames: "[name].mjs",
@@ -47,7 +47,7 @@ const buildModules = async () => {
 
   await bundle.write({
     format: "cjs",
-    dir: path.resolve(IconOut, "lib"),
+    dir: path.resolve(IconOut, "lcx-design-icon", "lib"),
     preserveModules: true,
     preserveModulesRoot: path.resolve(lcxDesignIconRoot, "react"),
     entryFileNames: "[name].cjs",

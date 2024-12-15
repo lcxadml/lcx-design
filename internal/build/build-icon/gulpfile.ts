@@ -7,7 +7,7 @@ import { cleanIconReact } from "./tasks/clean-icon";
 import { generateIndex } from "./tasks/generate-index";
 import { copyFiles } from "./tasks/copyFiles";
 export default series(
-  withTaskName("clean", () => run("pnpm run clean")),
+  withTaskName("clean", () => run("pnpm run clean:icon")),
   cleanIconReact,
   buildReact,
   generateIndex,

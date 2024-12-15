@@ -4,6 +4,9 @@
   "description": "",
   "main": "lib/components/index.cjs",
   "module": "es/components/index.mjs",
+  "unpkg": "umd/index.full.js",
+  "jsdelivr": "umd/index.full.js",
+  "style": "umd/index.css",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

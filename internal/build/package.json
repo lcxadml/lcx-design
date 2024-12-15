@@ -29,6 +29,7 @@
     "@svgr/plugin-prettier": "^8.1.0",
     "@svgr/plugin-svgo": "^8.1.0",
     "@svgr/rollup": "^8.1.0",
+    "@types/fs-extra": "^11.0.4",
     "@vitejs/plugin-vue": "^5.2.1",
     "fast-glob": "^3.3.2",
     "rollup": "^4.28.0",

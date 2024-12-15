@@ -1,9 +1,9 @@
 {
-  "name": "lcx-design",
-  "version": "1.0.0",
+  "name": "lcx-design1",
+  "version": "0.1.0",
   "description": "",
-  "main": "lib/components/index.cjs",
-  "module": "es/components/index.mjs",
+  "main": "lib/components/index.js",
+  "module": "es/components/index.js",
   "unpkg": "umd/index.full.js",
   "jsdelivr": "umd/index.full.js",
   "style": "umd/index.css",

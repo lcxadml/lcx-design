@@ -6,7 +6,7 @@ export const copyFiles = async () => {
   await copyFile(
     path.resolve(lcxDesignIconRoot, "package.json"),
     path.resolve(
-      lcxDesignIconRootReact,
+      lcxDesignIconRoot,
       "dist",
       "lcx-design-icon",
       "package.json"

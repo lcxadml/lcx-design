@@ -42,7 +42,7 @@ const buildModules = async () => {
     dir: path.resolve(IconOut, "lcx-design-icon", "es"),
     preserveModules: true,
     preserveModulesRoot: path.resolve(lcxDesignIconRoot, "react"),
-    entryFileNames: "[name].mjs",
+    entryFileNames: "[name].js",
   });
 
   await bundle.write({
@@ -50,7 +50,7 @@ const buildModules = async () => {
     dir: path.resolve(IconOut, "lcx-design-icon", "lib"),
     preserveModules: true,
     preserveModulesRoot: path.resolve(lcxDesignIconRoot, "react"),
-    entryFileNames: "[name].cjs",
+    entryFileNames: "[name].js",
   });
 };
 

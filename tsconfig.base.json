@@ -11,13 +11,16 @@
     "noUnusedLocals": true,
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
     "esModuleInterop": true,
     "removeComments": false,
     "rootDir": ".",
     "types": [],
+    "allowImportingTsExtensions": true,
+    "emitDeclarationOnly": true,
     "paths": {
-      "@element-plus/*": ["packages/*"],
-      "element-plus": ["packages/element-plus"]
+      "lcx-design/*": ["packages/*"],
+      "lcx-design": ["packages/lcx-design"]
     },
     "preserveSymlinks": true
   }

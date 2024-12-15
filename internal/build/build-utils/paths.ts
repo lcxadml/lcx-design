@@ -6,6 +6,8 @@ export const pkgRoot = resolve(pathRoot, "packages");
 
 export const lcxDesignRoot = resolve(pkgRoot, "lcx-design");
 
+export const buildRoot = resolve(pathRoot, "internal");
+
 export const lcxDesignIconRoot = resolve(pkgRoot, "lcx-design-icon");
 
 export const lcxDesignIconRootSvg = resolve(lcxDesignIconRoot, "svg");

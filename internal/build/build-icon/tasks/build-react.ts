@@ -1,7 +1,7 @@
 import {
   lcxDesignIconRootReact,
   lcxDesignIconRootSvg,
-} from "../../build-utils";
+} from "../../../build/build-utils";
 
 import { transform } from "@svgr/core";
 
@@ -63,4 +63,3 @@ export const buildReact = async () => {
     );
   });
 };
-buildReact();

@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "pnpm run -C internal/build start"
+    "build": "pnpm run -C internal/build start",
+    "build:icon": "pnpm run -C internal/build start:icon",
+    "clean": "pnpm run clean:dist && pnpm run -r --parallel clean",
+    "clean:dist": "rimraf dist"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +23,8 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
+    "@types/gulp": "^4.0.17",
+    "rimraf": "^6.0.1",
     "tsx": "^4.19.2",
     "typescript": "^5.7.2"
   }

@@ -4,9 +4,6 @@
   "description": "",
   "main": "lib/components/index.cjs",
   "module": "es/components/index.mjs",
-  "directories": {
-    "lib": "lib"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

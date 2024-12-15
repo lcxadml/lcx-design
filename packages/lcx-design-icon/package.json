@@ -1,0 +1,13 @@
+{
+  "name": "lcx-design-icon",
+  "version": "1.0.0",
+  "main": "lib/index.cjs",
+  "module": "es/index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

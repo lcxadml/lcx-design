@@ -71,3 +71,4 @@ export const buildModules = async () => {
     entryFileNames: "[name].cjs",
   });
 };
+buildModules();

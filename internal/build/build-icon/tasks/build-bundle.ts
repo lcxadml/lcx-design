@@ -2,7 +2,11 @@ import { glob } from "fast-glob";
 import { rollup } from "rollup";
 import nodeResolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
-import { IconOut, lcxDesignIconRootReact } from "../../build-utils";
+import {
+  IconOut,
+  lcxDesignIconRoot,
+  lcxDesignIconRootReact,
+} from "../../build-utils";
 
 import babel from "@rollup/plugin-babel";
 import esbuild from "rollup-plugin-esbuild";
@@ -10,7 +14,7 @@ import typescript from "@rollup/plugin-typescript";
 import * as path from "path";
 
 const buildModules = async () => {
-  const input = await glob("*.tsx", {
+  const input = await glob("*.{ts, tsx}", {
     cwd: lcxDesignIconRootReact,
     absolute: true,
     onlyFiles: true,
@@ -33,20 +37,21 @@ const buildModules = async () => {
 
     external: [],
   });
-  bundle.write({
+  await bundle.write({
     format: "esm",
     dir: path.resolve(IconOut, "es"),
     preserveModules: true,
-    preserveModulesRoot: IconOut,
+    preserveModulesRoot: path.resolve(lcxDesignIconRoot, "react"),
     entryFileNames: "[name].mjs",
   });
 
-  bundle.write({
+  await bundle.write({
     format: "cjs",
     dir: path.resolve(IconOut, "lib"),
     preserveModules: true,
-    preserveModulesRoot: IconOut,
+    preserveModulesRoot: path.resolve(lcxDesignIconRoot, "react"),
     entryFileNames: "[name].cjs",
   });
 };
-buildModules();
+
+export default buildModules;

@@ -1,9 +1,12 @@
-import React from 'react'
+import { Button } from 'lcx-design';
+import { Add } from 'lcx-design-icon';
+import React from 'react';
 
-export default function Button() {
+export default function index() {
   return (
-    <div>
+    <Button>
+      <Add />
       Button
-    </div>
-  )
+    </Button>
+  );
 }

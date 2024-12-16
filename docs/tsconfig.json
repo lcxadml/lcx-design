@@ -8,9 +8,11 @@
     "baseUrl": "./",
     "paths": {
       "@@/*": [".dumi/tmp/*"],
+      "lcx-design": ["../packages/lcx-design/components/"],
+      "lcx-design-icon": ["../packages/lcx-design-icon/react/"],
       "docs": ["src"],
       "docs/*": ["src/*", "*"]
     }
   },
-  "include": [".dumirc.ts", "src/**/*"]
+  "include": ["**/*", ".dumirc.ts", "src/**/*"]
 }

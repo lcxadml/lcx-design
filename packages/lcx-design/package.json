@@ -1,6 +1,6 @@
 {
-  "name": "lcx-design1",
-  "version": "0.1.0",
+  "name": "lcx-design",
+  "version": "0.0.1",
   "description": "",
   "main": "lib/components/index.js",
   "module": "es/components/index.js",

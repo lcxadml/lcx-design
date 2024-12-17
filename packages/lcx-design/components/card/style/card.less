@@ -1,0 +1,22 @@
+.lcx-design-card {
+  background-color: var(--lcx-design-color-background);
+  border-radius: var(--lcx-card-border-radius, 8px);
+  padding: 0 var(--lcx-card-padding-inline, 12px);
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--lcx-card-header-gap, 8px);
+    padding: var(--lcx-card-header-padding-block, 12px) 0;
+    &-title {
+      font-size: var(--lcx-design-font-size-7);
+      line-height: 1.4;
+      font-weight: bold;
+    }
+  }
+  &__extra {
+  }
+  &__body {
+    padding: var(--lcx-card-body-padding-block, 12px) 0;
+  }
+}

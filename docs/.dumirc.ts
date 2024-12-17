@@ -12,6 +12,7 @@ export default defineConfig({
       'lcx-design-icon',
       path.resolve(__dirname, '../packages/lcx-design-icon/react'),
     );
+    memo.resolve.extensions.add('.less');
   },
   themeConfig: {
     name: 'lcx-design',

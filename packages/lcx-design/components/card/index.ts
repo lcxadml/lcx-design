@@ -1,5 +1,5 @@
 import Card from "./src/Card";
-import "./style/card";
+import "./style/card.less";
 
 export type { CardProps } from "./src/Card";
 

@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "pnpm run -C internal/build start",
     "build:icon": "pnpm run -C internal/build start:icon",
+    "update:version": "tsx scripts/update-version.ts",
     "clean": "pnpm run clean:dist && pnpm run -r --parallel clean",
     "clean:dist": "rimraf dist",
     "clean:icon": "rimraf ./packages/lcx-design-icon/dist"
@@ -21,7 +22,10 @@
     "@types/react-dom": "^18.3.1",
     "classnames": "^2.5.1",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "winston": "^3.17.0",
+    "lcx-design": "workspace:*",
+    "lcx-design-icon": "workspace:*"
   },
   "devDependencies": {
     "@types/gulp": "^4.0.17",

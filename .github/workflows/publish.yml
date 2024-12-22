@@ -28,16 +28,11 @@ jobs:
       - name: Install dependencies
         run: pnpm i --no-frozen-lockfile
 
-      - name: Configure git
-        run: |
-          git config user.name "licunxing"
-          git config user.email "864255598@qq.com"
-
       - name: Get Version
         run: echo "TAG_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
       - name: Authenticate to npm
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISH_TOKEN }}" > ./.npmrc
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISH_TOKEN }}" >> ./.npmrc
 
       - name: Update Icon Version
         if: startsWith(github.ref, 'refs/tags/icon')
@@ -46,6 +41,11 @@ jobs:
           TAG_VERSION: ${{env.TAG_VERSION}}
           NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
           REGISTRY: https://registry.npmjs.com/
+
+      - name: Configure git
+        run: |
+          git config user.name "licunxing"
+          git config user.email "864255598@qq.com"
 
       - name: Commit and push changes
         env:

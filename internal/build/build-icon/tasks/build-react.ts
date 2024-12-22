@@ -36,6 +36,7 @@ export const buildReact = async () => {
       svgStr,
       {
         icon: true,
+        typescript: true,
         plugins: [
           "@svgr/plugin-svgo",
           "@svgr/plugin-jsx",

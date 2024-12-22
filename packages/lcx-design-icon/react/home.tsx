@@ -1,5 +1,6 @@
 import * as React from "react";
-const Home = (props) => (
+import type { SVGProps } from "react";
+const Home = (props: SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="1em"

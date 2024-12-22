@@ -14,27 +14,46 @@ jobs:
 
       # 设置 Node.js 环境
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "lts/*"
+          node-version: 20
+          registry-url: https://registry.npmjs.com/
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Update npm
+        run: npm install npm@9 -g
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm i --no-frozen-lockfile
 
       - name: Get Version
         run: echo "TAG_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
       - name: Update Icon Version
         if: startsWith(github.ref, 'refs/tags/icon')
-        run: sh ./scripts/publish.sh
-        env: 
+        run: sh ./scripts/publish-icon.sh
+        env:
           TAG_VERSION: ${{env.TAG_VERSION}}
+        
+      - name: Configure git
+        run: |
+          git config user.name "licunxing"
+          git config user.email "864255598@qq.com"
+
+      - name: Commit and push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git add .
+          git commit -m "UpdateVersion"
+          git push origin HEAD:feat/test-publish
 
       - name: Build Icon
         if: startsWith(github.ref, 'refs/tags/icon')
-        run: npx gulp --gulpfile ./internal/build/build-icon/gulpfile.ts
+        run: pnpm run build:icon
 
       - name: Build Icon
         if: startsWith(github.ref, 'refs/tags/comp')
         run: npx gulp --gulpfile ./internal/build/src/gulpfile.ts
-      

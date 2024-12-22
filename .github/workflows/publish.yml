@@ -1,0 +1,40 @@
+name: Publish Icon Packages or Components Packages
+on:
+  push:
+    tags:
+      - "*"
+jobs:
+  run-gulp:
+    runs-on: ubuntu-latest
+
+    steps:
+      #检查代码仓库
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 设置 Node.js 环境
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "lts/*"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Get Version
+        run: echo "TAG_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+
+      - name: Update Icon Version
+        if: startsWith(github.ref, 'refs/tags/icon')
+        run: sh ./scripts/publish.sh
+        env: 
+          TAG_VERSION: ${{env.TAG_VERSION}}
+
+      - name: Build Icon
+        if: startsWith(github.ref, 'refs/tags/icon')
+        run: npx gulp --gulpfile ./internal/build/build-icon/gulpfile.ts
+
+      - name: Build Icon
+        if: startsWith(github.ref, 'refs/tags/comp')
+        run: npx gulp --gulpfile ./internal/build/src/gulpfile.ts
+      

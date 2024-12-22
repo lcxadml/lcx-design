@@ -1,4 +1,4 @@
-import { readFile } from "fs/promises";
+import { readFile, writeFile } from "fs/promises";
 import path from "path";
 import { lcxDesignRoot } from "../internal/build/build-utils";
 import chalk from "chalk";

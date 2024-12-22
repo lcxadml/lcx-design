@@ -53,7 +53,4 @@ jobs:
       - name: Build Icon
         if: startsWith(github.ref, 'refs/tags/icon')
         run: pnpm run build:icon
-
-      - name: Build Icon
-        if: startsWith(github.ref, 'refs/tags/comp')
-        run: npx gulp --gulpfile ./internal/build/src/gulpfile.ts
+        

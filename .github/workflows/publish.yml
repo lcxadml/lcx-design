@@ -31,6 +31,10 @@ jobs:
       - name: Get Version
         run: echo "TAG_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
 
+      - name: Authenticate to npm
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISH_TOKEN }}" > ~/.npmrc
+
+
       - name: Update Icon Version
         if: startsWith(github.ref, 'refs/tags/icon')
         run: sh ./scripts/publish-icon.sh

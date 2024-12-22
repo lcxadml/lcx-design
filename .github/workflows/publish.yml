@@ -51,6 +51,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git add .
+          git add ./packages/lcx-design-icon/packages.json
           git commit -m "UpdateVersion"
           git push origin HEAD:main

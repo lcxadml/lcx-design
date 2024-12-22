@@ -6,7 +6,7 @@ const logger = winston.createLogger({
     winston.format.timestamp(),
     winston.format.prettyPrint()
   ),
-  defaultMeta: { service: "Docs-api-trigger" },
+  defaultMeta: { service: "Lcx-design" },
   transports: [
     new winston.transports.File({
       filename: "error.log",

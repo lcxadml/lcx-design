@@ -63,8 +63,10 @@ jobs:
           if [[ "$TARGET_VERSION" == "icon" ]]; then
             echo "Adding ./packages/lcx-design-icon/package.json"
             git add ./packages/lcx-design-icon/package.json
+            git commit -m "Update Icon Version!"
           else
             echo "Adding ./packages/lcx-design/package.json"
             git add ./packages/lcx-design/package.json
-          git commit -m "UpdateVersion"
+            git commit -m "Update Comp Version!"
+          fi
           git push origin HEAD:main

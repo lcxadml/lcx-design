@@ -9,7 +9,7 @@ echo "build:comp..."
 pnpm run build
 echo "build:comp success!"
 
-cd packages/dist/lcx-design
+cd dist/lcx-design
 npm publish
 cd -
 

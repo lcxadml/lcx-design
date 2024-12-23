@@ -12,7 +12,19 @@
     "update:version": "tsx scripts/update-version.ts",
     "clean": "pnpm run clean:dist && pnpm run -r --parallel clean",
     "clean:dist": "rimraf dist",
-    "clean:icon": "rimraf ./packages/lcx-design-icon/dist"
+    "clean:icon": "rimraf ./packages/lcx-design-icon/dist",
+    "prepare": "husky"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint --config .commitlintrc.js -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{cjs,js,jsx,ts,tsx}": "eslint --fix",
+    "*.{cjs,css,cts,html,js,json,jsx,less,md,mjs,mts,scss,ts,tsx,vue,yaml,yml}": "prettier --write",
+    "*.{css,less,scss}": "stylelint --fix"
   },
   "keywords": [],
   "author": "",
@@ -32,9 +44,20 @@
     "winston": "^3.17.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^19.6.1",
+    "@commitlint/config-conventional": "^19.6.0",
+    "@eslint/js": "^9.17.0",
     "@types/gulp": "^4.0.17",
+    "eslint": "^9.17.0",
+    "globals": "^15.14.0",
+    "husky": "9.0.11",
+    "lint-staged": "15.2.2",
+    "prettier": "^3.4.2",
     "rimraf": "^6.0.1",
+    "stylelint-config-ali": "^2.1.1",
+    "stylelint-prettier": "^5.0.2",
     "tsx": "^4.19.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.18.1"
   }
 }

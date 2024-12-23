@@ -1,5 +1,5 @@
 import { Add } from "lcx-design-icon";
-import { Button } from "lcx-design1";
+import { Button } from "lcx-design";
 import "lcx-design1/es/index.css";
 function App() {
   return (

@@ -45,7 +45,7 @@ export const buildReact = async () => {
       },
       {
         componentName: getCompName(initName),
-      }
+      },
     );
     const fileName = file.name.replace(".svg", ".tsx");
 
@@ -60,7 +60,7 @@ export const buildReact = async () => {
           }
         }
         console.log("写入成功！", file.name);
-      }
+      },
     );
   });
 };

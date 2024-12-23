@@ -18,8 +18,6 @@ export default [
       "lib",
       "node_modules",
       "docs",
-      ".commitlintrc.js",
-      ".stylelintrc.js",
     ],
   },
   pluginJs.configs.recommended,

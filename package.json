@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "pnpm run -C internal/build start",
     "build:icon": "pnpm run -C internal/build start:icon",
-    "update:icon-version": "tsx scripts/update-version.ts",
+    "update:icon-version": "tsx scripts/update-version-icon.ts",
+    "update:version": "tsx scripts/update-version.ts",
     "clean": "pnpm run clean:dist && pnpm run -r --parallel clean",
     "clean:dist": "rimraf dist",
     "clean:icon": "rimraf ./packages/lcx-design-icon/dist"

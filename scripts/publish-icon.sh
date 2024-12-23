@@ -1,7 +1,7 @@
 #!/bin/sh
 
 set -e
-echo "pnpm update:version..."
+echo "pnpm update:icon-version..."
 pnpm update:icon-version
 echo "update version success!"
 
@@ -13,4 +13,4 @@ cd packages/lcx-design-icon/dist/lcx-design-icon
 npm publish
 cd -
 
-echo "✅ Publish completed"
+echo "✅ Publish icon completed"

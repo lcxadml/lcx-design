@@ -42,6 +42,14 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
           REGISTRY: https://registry.npmjs.com/
 
+      - name: Update Icon Version
+        if: startsWith(github.ref, 'refs/tags/comp')
+        run: sh ./scripts/publish.sh
+        env:
+          TAG_VERSION: ${{env.TAG_VERSION}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
+          REGISTRY: https://registry.npmjs.com/
+
       - name: Configure git
         run: |
           git config user.name "licunxing"

@@ -1,9 +1,9 @@
 import { readFile, writeFile } from "fs/promises";
 import path from "path";
-import { lcxDesignRoot } from "../internal/build/build-utils";
+import { lcxDesignIconRoot } from "../internal/build/build-utils";
 import chalk from "chalk";
 
-const packPath = path.resolve(lcxDesignRoot, "package.json");
+const packPath = path.resolve(lcxDesignIconRoot, "package.json");
 
 const main = async () => {
   const tagVersion = process.env.TAG_VERSION;
@@ -15,21 +15,21 @@ const main = async () => {
     console.log("error:", error);
   }
 
-  console.log("=====comp version data: ", data);
+  console.log("=====icon version data: ", data);
 
   if (!tagVersion) {
     return chalk.whiteBright.bold.redBright("版本号不存在！");
   }
 
   const [publishType, publishVersion] = tagVersion.split("-");
-  if (!publishType || !publishVersion || publishType !== "comp") {
+  if (!publishType || !publishVersion || publishType !== "icon") {
     return chalk.whiteBright.bold.redBright("Tag版本有误！");
   }
 
   data.version = publishVersion;
 
   await writeFile(packPath, JSON.stringify(data, null, 2));
-  console.log("update comp version successful!", data?.version);
+  console.log("update icon version successful!", data?.version);
 };
 
 main();

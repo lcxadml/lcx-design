@@ -1,10 +1,10 @@
-const winston = require("winston");
+import winston from "winston";
 
 const logger = winston.createLogger({
   level: "info", // 你可以设置为 'debug', 'info', 'warn', 'error', 等
   format: winston.format.combine(
     winston.format.timestamp(),
-    winston.format.prettyPrint()
+    winston.format.prettyPrint(),
   ),
   defaultMeta: { service: "Lcx-design" },
   transports: [

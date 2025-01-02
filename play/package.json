@@ -11,8 +11,8 @@
   },
   "dependencies": {
     "gulp": "^5.0.0",
-    "lcx-design-icon": "^0.0.6",
-    "lcx-design1": "^0.1.0",
+    "lcx-design": "workspace:*",
+    "lcx-design-icon": "workspace:*",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

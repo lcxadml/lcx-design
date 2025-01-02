@@ -15,13 +15,9 @@
     "esModuleInterop": true,
     "removeComments": false,
     "rootDir": ".",
-    "types": [],
+    "typeRoots": ["./src/typings", "./node_modules/@types"],
     "allowImportingTsExtensions": true,
     "emitDeclarationOnly": true,
-    "paths": {
-      "lcx-design/*": ["packages/*"],
-      "lcx-design": ["packages/lcx-design"]
-    },
     "preserveSymlinks": true
   }
 }

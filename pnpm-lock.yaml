@@ -202,6 +202,9 @@ importers:
       '@react-spring/web':
         specifier: ^9.7.5
         version: 9.7.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@types/react-dom':
+        specifier: ^18.3.1
+        version: 18.3.1
       ahooks:
         specifier: ^3.8.4
         version: 3.8.4(react@18.3.1)
@@ -211,6 +214,9 @@ importers:
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
     devDependencies:
       '@esbuild-kit/cjs-loader':
         specifier: ^2.4.4

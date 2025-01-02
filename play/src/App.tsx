@@ -1,12 +1,14 @@
 import { Add } from "lcx-design-icon";
-import { Button, Mask } from "lcx-design";
+import { Button, Toast } from "lcx-design";
 function App() {
+  const handleBtnClick = () => {
+    Toast.show();
+  };
   return (
     <div>
       111
-      <Button>添加了一个button</Button>
+      <Button onClick={handleBtnClick}>添加了一个button</Button>
       <Add />
-      <Mask>12313</Mask>
     </div>
   );
 }

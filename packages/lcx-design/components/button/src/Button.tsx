@@ -9,12 +9,19 @@ type BasicProps = {
   children?: ReactNode;
 };
 
-export type ButtonProps = BasicProps & {};
+export type ButtonProps = BasicProps & {
+  onClick: (e: React.MouseEvent<HTMLDivElement>) => void;
+};
 
-export default function Button({ children, className, ...reset }: ButtonProps) {
+export default function Button({
+  children,
+  className,
+  onClick,
+  ...reset
+}: ButtonProps) {
   const ns = useNamespace("button");
   return (
-    <div className={classNames(ns.b(), className)} {...reset}>
+    <div onClick={onClick} className={classNames(ns.b(), className)} {...reset}>
       {children}
     </div>
   );

@@ -1,4 +1,7 @@
 import React, {
+  cloneElement,
+  createRef,
+  forwardRef,
   ReactElement,
   useEffect,
   useImperativeHandle,
@@ -24,7 +27,7 @@ export const renderToBody = (element: ReactElement) => {
 };
 
 export const renderImperatively = (element: ReactElement) => {
-  const Wrapper = React.forwardRef<ImperativeHandler>((_, ref) => {
+  const Wrapper = forwardRef<ImperativeHandler>((_, ref) => {
     const [visible, setVisible] = useState(false);
     const [elementToRender, setElementToRender] = useState(element);
     const closeRef = useRef(false);
@@ -57,7 +60,7 @@ export const renderImperatively = (element: ReactElement) => {
       };
     });
 
-    return React.cloneElement(elementToRender, {
+    return cloneElement(elementToRender, {
       ...elementToRender.props,
       key: keyRef.current,
       visible,
@@ -66,7 +69,7 @@ export const renderImperatively = (element: ReactElement) => {
     });
   });
 
-  const wrapperRef = React.createRef<ImperativeHandler>();
+  const wrapperRef = createRef<ImperativeHandler>();
 
   const unmount = renderToBody(<Wrapper ref={wrapperRef} />);
 

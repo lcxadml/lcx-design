@@ -24,7 +24,11 @@ export const buildFullEntry = async () => {
       }),
       babel({
         babelHelpers: "bundled",
-        presets: ["@babel/preset-react", "@babel/preset-flow"],
+        presets: [
+          "@babel/preset-react",
+          "@babel/preset-flow",
+          "@babel/preset-typescript",
+        ],
         extensions: [".ts", ".tsx"],
       }),
       typescript(),

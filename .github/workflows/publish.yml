@@ -42,7 +42,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.NPM_PUBLISH_TOKEN}}
           REGISTRY: https://registry.npmjs.com/
 
-      - name: Update Icon Version
+      - name: Update Comp Version
         if: startsWith(github.ref, 'refs/tags/comp')
         run: sh ./scripts/publish.sh
         env:

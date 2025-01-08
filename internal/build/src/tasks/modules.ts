@@ -13,17 +13,17 @@ import postcss from "rollup-plugin-postcss";
 const excludeFiles = (files) => {
   const excludes = ["node_modules"];
   return files.filter(
-    (path) => !excludes.some((exclude) => path.includes(exclude))
+    (path) => !excludes.some((exclude) => path.includes(exclude)),
   );
 };
 
 export const buildModules = async () => {
   const input = excludeFiles(
-    await glob("**/*.{js,ts,jsx}", {
+    await glob("**/*.{js,ts,jsx,tsx}", {
       cwd: compRoot,
       absolute: true,
       onlyFiles: true,
-    })
+    }),
   );
 
   const bundle = await rollup({
@@ -42,7 +42,12 @@ export const buildModules = async () => {
       }),
       babel({
         babelHelpers: "bundled",
-        presets: ["@babel/preset-react", "@babel/preset-flow"],
+
+        presets: [
+          "@babel/preset-react",
+          "@babel/preset-flow",
+          "@babel/preset-typescript",
+        ],
         extensions: [".ts", ".tsx"],
       }),
       typescript(),

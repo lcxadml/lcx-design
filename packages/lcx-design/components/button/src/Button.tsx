@@ -10,7 +10,7 @@ type BasicProps = {
 };
 
 export type ButtonProps = BasicProps & {
-  onClick: (e: React.MouseEvent<HTMLDivElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLDivElement>) => void;
 };
 
 export default function Button({

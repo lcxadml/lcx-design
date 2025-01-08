@@ -2,7 +2,9 @@ import { Add } from "lcx-design-icon";
 import { Button, Toast } from "lcx-design";
 function App() {
   const handleBtnClick = () => {
-    Toast.show();
+    Toast.show({
+      content: "Hello Toast",
+    });
   };
   return (
     <div>

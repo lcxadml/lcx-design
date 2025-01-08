@@ -2,12 +2,14 @@ import { CSSProperties, ReactNode, useEffect } from "react";
 import { useSpringValue, animated, easings } from "@react-spring/web";
 import useNamespace from "../../../utils/useNamespace";
 import { createPortal } from "react-dom";
+import { BasicProps } from "../../../utils";
+import classNames from "classnames";
 
 type GetContainer = HTMLElement | (() => HTMLElement) | null;
 
 type PropagationEvent = "click" | "touchstart";
 
-export type ToastProps = {
+export type ToastProps = BasicProps & {
   afterClose?: () => void;
   maskStyle?: () => CSSProperties;
   maskClassName?: string;
@@ -23,7 +25,15 @@ export type ToastProps = {
 
 const ns = useNamespace("toast");
 
-export default function InternalToast({ ...resets }: ToastProps) {
+export default function InternalToast({
+  afterClose,
+  content,
+  duration = 2000,
+  style,
+  className,
+  icon,
+  ...resets
+}: ToastProps) {
   const opacity = useSpringValue(0, {
     config: {
       mass: 5,
@@ -31,25 +41,26 @@ export default function InternalToast({ ...resets }: ToastProps) {
     },
   });
 
-  const top = useSpringValue("39%", {
+  const top = useSpringValue("38%", {
     config: {
       mass: 1,
       easing: easings.easeOutSine,
       duration: 500,
     },
   });
-  console.log("...", resets);
 
   useEffect(() => {
     opacity.start(1);
     top.start("40%");
 
-    const id = setTimeout(() => {
+    const id = setTimeout(async () => {
+      if (duration === 0) return;
       opacity.start(0);
-      top.start("39%", {
-        onRest() {},
-      });
-    }, 2000);
+      const result = await top.start("42%");
+      if (result?.finished === true) {
+        afterClose?.();
+      }
+    }, duration);
 
     return () => {
       clearTimeout(id);
@@ -58,13 +69,16 @@ export default function InternalToast({ ...resets }: ToastProps) {
 
   return createPortal(
     <animated.div
-      className={ns.b()}
+      className={classNames(ns.b(), className, { [ns.m("has-icon")]: icon })}
       style={{
         opacity,
         top,
+        ...style,
       }}
+      {...resets}
     >
-      Hello toast
+      <div className={ns.e("icon")}>{icon}</div>
+      {content}
     </animated.div>,
     document.body,
   );

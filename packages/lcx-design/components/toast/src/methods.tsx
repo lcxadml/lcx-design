@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import {
   ImperativeHandler,
   renderImperatively,
@@ -6,15 +7,25 @@ import InternalToast from "./Toast";
 
 let currentHandler: ImperativeHandler | null = null;
 
-const show = () => {
+export type ShowProps = {
+  content: string;
+  afterClose?: () => void;
+  duration?: number;
+  icon?: ReactNode;
+};
+
+const show = (props: ShowProps | string) => {
+  const mergeProps = typeof props === "string" ? { content: props } : props;
+  const element = <InternalToast {...mergeProps} />;
+
   if (currentHandler) {
     if (currentHandler.isRendered?.()) {
-      currentHandler.replace(<InternalToast />);
+      currentHandler.replace(element);
     } else {
-      currentHandler = renderImperatively(<InternalToast />);
+      currentHandler = renderImperatively(element);
     }
   } else {
-    currentHandler = renderImperatively(<InternalToast />);
+    currentHandler = renderImperatively(element);
   }
 };
 

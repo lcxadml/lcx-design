@@ -1,6 +1,7 @@
 import copy from 'copy-to-clipboard';
+import { Toast } from 'lcx-design';
 import * as AllIcons from 'lcx-design-icon';
-import React, { useMemo } from 'react';
+import React, { ReactNode, useMemo } from 'react';
 import './index.less';
 
 const allIcons: Record<string, any> = AllIcons;
@@ -11,8 +12,14 @@ export default function Icon() {
     return Object.keys(allIcons);
   }, []);
 
-  const handleClick = (name: string) => {
-    copy(`<${name} />`);
+  const handleClick = (name: string, icon: ReactNode) => {
+    const result = copy(`<${name} />`);
+    if (result) {
+      Toast.show({
+        content: '复制成功',
+        icon,
+      });
+    }
   };
 
   return (
@@ -24,7 +31,10 @@ export default function Icon() {
             key={iconName}
             className={`${classPrefix}-item`}
             onClick={() => {
-              handleClick(iconName);
+              handleClick(
+                iconName,
+                <Component style={{ fontSize: '40px', color: '#fff' }} />,
+              );
             }}
           >
             <Component style={{ fontSize: '30px' }} />

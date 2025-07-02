@@ -1,6 +1,6 @@
 {
-  "entryPoints": ["src/api"],
-  "out": "docs",
+  "entryPoints": ["src"],
+  "out": "docs/api",
   "plugin": ["typedoc-plugin-markdown"],
   "readme": "none",
   "excludePrivate": true,
